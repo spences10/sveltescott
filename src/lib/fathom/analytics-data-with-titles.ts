@@ -1,5 +1,5 @@
 export const analytics_data_with_titles = (
-  analytics_data: any,
+  analytics_data: AnalyticsData[],
   posts_by_slug: Record<string, Post>,
 ) => {
   return analytics_data

@@ -7,52 +7,38 @@
  * @returns {Object|null} - Returns an object containing the response
  * body and headers if the Fathom script is blocked, or null.
  */
-export const handle_block_fathom = (data: any, data_key: string) => {
-  console.log('=====================')
-  console.log(
-    `Handle Block Fathom: ${
-      data_key.charAt(0).toUpperCase() + data_key.slice(1)
-    }`,
-  )
-  console.log('=====================')
+export const handle_block_fathom = (
+  data: any,
+  data_key: string,
+): object | null => {
+  let is_data_available = false
+  let response_body = {}
 
-  if (
-    (Array.isArray(data) && data.length > 0) ||
-    (data && data.total != null && data.content)
-  ) {
-    // Cached data is available, return it
-    console.log('=====================')
-    console.log(
-      `Handle Block Fathom Cache Hit: ${
-        data_key.charAt(0).toUpperCase() + data_key.slice(1)
-      }`,
-    )
-    console.log('=====================')
-    return {
-      body: {
-        [data_key]: data,
-      },
-      headers: {
-        'X-Robots-Tag': 'noindex, nofollow',
-      },
+  if (Array.isArray(data)) {
+    is_data_available = data.length > 0
+    if (!is_data_available) {
+      response_body = []
     }
   } else {
-    // No cached data available, return empty array
-    console.log('=====================')
-    console.log(
-      `Handle Block Fathom Cache Miss: ${
-        data_key.charAt(0).toUpperCase() + data_key.slice(1)
-      }`,
-    )
-    console.log('=====================')
-    return {
-      body: {
-        [data_key]: Array.isArray(data) ? [] : {},
-        message: 'Fathom script is blocked on the client-side.',
-      },
-      headers: {
-        'X-Robots-Tag': 'noindex, nofollow',
-      },
+    is_data_available = data?.total != null && data.content
+    if (!is_data_available) {
+      response_body = {}
     }
+  }
+
+  if (is_data_available) {
+    response_body = data
+  }
+
+  return {
+    body: {
+      [data_key]: response_body,
+      message: is_data_available
+        ? undefined
+        : 'Fathom script is blocked on the client-side.',
+    },
+    headers: {
+      'X-Robots-Tag': 'noindex, nofollow',
+    },
   }
 }

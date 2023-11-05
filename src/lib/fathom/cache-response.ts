@@ -12,11 +12,16 @@ export const cache_response = async (
   data: any,
   cache_duration: number,
 ) => {
-  try {
-    await redis.set(cache_key, JSON.stringify(data), {
-      ex: cache_duration,
-    })
-  } catch (e) {
-    console.error(`Error caching response: ${e}`)
+  let retries = 3
+  while (retries > 0) {
+    try {
+      await redis.set(cache_key, JSON.stringify(data), {
+        ex: cache_duration,
+      })
+      break
+    } catch (e) {
+      console.error(`Error caching response: ${e}`)
+      retries--
+    }
   }
 }
