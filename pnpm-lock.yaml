@@ -130,8 +130,8 @@ importers:
         specifier: 1.6.6
         version: 1.6.6
       svead:
-        specifier: ^0.0.12
-        version: 0.0.12(svelte@5.19.0)
+        specifier: ^0.0.13
+        version: 0.0.13(svelte@5.19.0)
       svelte:
         specifier: ^5.19.0
         version: 5.19.0
@@ -1958,6 +1958,7 @@ packages:
 
   libsql@0.4.7:
     resolution: {integrity: sha512-T9eIRCs6b0J1SHKYIvD8+KCJMcWZ900iZyxdnSCdqxN12Z1ijzT+jY5nrk72Jw4B0HGzms2NgpryArlJqvc3Lw==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -2512,8 +2513,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svead@0.0.12:
-    resolution: {integrity: sha512-wRcJ5OUCBqqdQO0FR1GpzzhxEMoO28RIPiFAE9CLoUokUS8bOqcm0BJg5w+LklobfJVBtzUkyR3QyKDqAnaBqw==}
+  svead@0.0.13:
+    resolution: {integrity: sha512-Tcm1xKEClmmAFcbjm9t8+T58BXWPAWgAwna/0Z+sRWuiYDCohF4WwHQzrgsy/73c4c7iT6gW4bENJ/ZV0YkViw==}
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0
 
@@ -5222,7 +5223,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svead@0.0.12(svelte@5.19.0):
+  svead@0.0.13(svelte@5.19.0):
     dependencies:
       svelte: 5.19.0
 
