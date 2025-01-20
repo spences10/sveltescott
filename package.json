@@ -65,7 +65,7 @@
 		"rehype-slug": "6.0.0",
 		"remark-preview": "1.0.3",
 		"slugify": "1.6.6",
-		"svead": "^0.0.12",
+		"svead": "^0.0.13",
 		"svelte": "^5.19.0",
 		"svelte-check": "^4.1.4",
 		"sveltekit-embed": "^0.0.18",
